@@ -1,9 +1,7 @@
 " git clone https://github.com/VundleVim/Vundle.vim.git  ~/.vim/bundle/Vundle.vim
 
-
-
 if has("gui_macvim")
-  " Press Ctrl-Tab to switch between open tabs (like browser tabs) to 
+  " Press Ctrl-Tab to switch between open tabs (like browser tabs) to
   " the right side. Ctrl-Shift-Tab goes the other way.
   noremap <C-Tab> :tabnext<CR>
   noremap <C-S-Tab> :tabprev<CR>
@@ -71,7 +69,6 @@ endif
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
-  syntax on
   set hlsearch
 endif
 
@@ -96,52 +93,50 @@ let &guicursor = &guicursor . ",a:blinkon0"
 " endfunc
 
 
-" Rosanta Define 
+" Rosanta Define
 filetype on
 filetype plugin on
 let mapleader=";"
-" move cursor to the start of a line or end of a line 
+" move cursor to the start of a line or end of a line
 nmap LB 0
 nmap LE $
-" intime search 
+" intime search
 set incsearch
-" ignore word case while searching 
+" ignore word case while searching
 set ignorecase
-" vim cmd line complete 
+" vim cmd line complete
 set wildmenu
-" syntax on 
-syntax on 
-" cursor line 
+" cursor line
 set cursorline
-" enable mouse 
+" enable mouse
 set mouse=a
 " tab width
-set shiftwidth=4
+set shiftwidth=2
 " show line number
 set nu
-"disable cursor blinking 
+"disable cursor blinking
 set gcr=a:block-blinkon0
 " always show status bar
 set laststatus=2
 " show line numer
 set ruler
-" enable auto indent 
+" enable auto indent
 filetype indent on
-" expand tab to blanks 
+" expand tab to blanks
 set expandtab
 " tab lenth
-set tabstop=4
+set tabstop=2
 " take 4 space as a tab
-set softtabstop=4
+set softtabstop=2
 
 set clipboard+=unnamed
 
-set nocompatible 
+set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'altercation/vim-colors-solarized'
+"Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
 Plugin 'vim-scripts/phd'
 Plugin 'Lokaltog/vim-powerline'
@@ -159,27 +154,34 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'vim-scripts/DrawIt'
 Plugin 'SirVer/ultisnips'
-"Plugin 'Valloric/YouCompleteMe'
-Plugin 'kien/ctrlp'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'kien/ctrlp.vim'
 " Plugin 'othree/vim-autocomplpop'
 Plugin 'ervandew/supertab'
 Plugin 'derekwyatt/vim-protodef'
 Plugin 'scrooloose/nerdtree'
-Plugin 'fholgado/minibufexpl.vim'
+" Plugin 'fholgado/minibufexpl.vim'
 Plugin 'gcmt/wildfire.vim'
 Plugin 'sjl/gundo.vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'lilydjwg/fcitx.vim'
-Plugin 'Shougo/vimproc.vim', {'do' : 'yes \| make'}
+" Plugin 'Shougo/vimproc.vim', {'do' : 'yes \| make'}
 Plugin 'xolox/vim-shell'
-Plugin 'chemzqm/vim-v2ex'
+" Plugin 'chemzqm/vim-v2ex'
 Plugin 'xolox/vim-misc'
 Plugin 'luochen1990/rainbow'
+" Plugin 'scrooloose/syntastic'
+Plugin 'google/vim-maktaba'
+Plugin 'google/vim-codefmt'
+Plugin 'google/vim-glaive'
+Plugin 'atom/fuzzy-finder'
+Plugin 'rhysd/vim-clang-format'
+" Plugin 'w0rp/ale'
 call vundle#end()
 filetype plugin indent on
 
-color molokai 
+color molokai
 
 if has("cscope") && filereadable("/usr/local/bin/cscope")
    set csprg=/usr/local/bin/cscope
@@ -204,7 +206,7 @@ endif
 "nmap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 "nmap <C-@>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 "nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
- 
+
 
 " ctrl-N to Tab
 " function! CleverTab()
@@ -216,12 +218,13 @@ endif
 " endfunction
 " inoremap <Tab> <C-R>=CleverTab()<CR>
 
+"disable swap file
+set noswapfile
 
-
-"indent-guides settings 
+"indent-guides settings
 "start indent_guides on vim startup
 let g:indent_guides_enable_on_vim_startup=0
-" visionable indent on level 2 
+" visionable indent on level 2
 let g:indent_guides_start_level=2
 " width of cursor
 let g:indent_guides_size=1
@@ -231,7 +234,7 @@ let g:indent_guides_size=1
 "set tags+=/usr/include/sys.tags
 
 
-" taglist 
+" taglist
 "let Tlist_Ctags_Cmd = '/usr/bin/catgs'
 "let Tlist_Ctags_Cmd = '/Users/xiaochen16/Downloads/ctags-5.8/ctags'
 let Tlist_Ctags_Cmd = '/usr/local/bin/ctags2'
@@ -240,16 +243,42 @@ let Tlist_WinWidth = 50
 " let Tlist_Auto_Open = 1
 
 "CtrlP configuration
-let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
+"let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+" let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_working_path_mode = ''
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_switch_buffer = 0
+"let g:ctrlp_user_command = 'find %s -type f | grep -v "*.o$" '
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o$
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll|o)$',
+  \ 'file': '\v\.(o|exe|so|dll)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
-map <s-p> :CtrlPTag<CR>
+map <c-R> :CtrlPTag<CR>
+let g:ctrlp_custom_ignore = 'html/'
 
 filetype off
 filetype plugin indent on
+
+
+"YouCompleteMe cnfiguration
+let g:ycm_auto_trigger = 1
+" let g:ycm_global_ycm_extra_conf='/Users/xiaochen16/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+
+"Remove traling spaces before flushing to disk
+autocmd BufWritePre * %s/\s\+$//e
+
+"dyncmaic code check
+"let g:syntastic_cpp_compiler = 'g++'
+"let g:syntastic_cpp_cpplint_exec = 'cpplint'
+"let g:syntastic_cpp_checkers = ['cpplint', 'gcc']
+"let g:syntastic_cpp_cpplint_thres = 1
+"let syntastic_aggregate_errors = 1
+"let g:syntastic_error_symbol = "✗"
+"let g:syntastic_warning_symbol = "⚠"
+"let g:syntastic_style_error_symbol = '!'
+"let g:syntastic_style_warning_symbol = '?'
+
