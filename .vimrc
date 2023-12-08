@@ -154,9 +154,9 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'vim-scripts/DrawIt'
 Plugin 'SirVer/ultisnips'
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 Plugin 'kien/ctrlp.vim'
-" Plugin 'othree/vim-autocomplpop'
+Plugin 'vim-scripts/AutoComplPop'
 Plugin 'ervandew/supertab'
 Plugin 'derekwyatt/vim-protodef'
 Plugin 'scrooloose/nerdtree'
@@ -178,6 +178,8 @@ Plugin 'google/vim-glaive'
 Plugin 'atom/fuzzy-finder'
 Plugin 'rhysd/vim-clang-format'
 " Plugin 'w0rp/ale'
+Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plugin 'junegunn/fzf.vim'
 call vundle#end()
 filetype plugin indent on
 
